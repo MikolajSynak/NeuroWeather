@@ -1,0 +1,28 @@
+# Security
+.env
+.env.local
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# Python Cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local Caches
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# IDE Settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
