@@ -16,7 +16,7 @@ The system utilizes a RAG-like architecture to bridge natural language queries w
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/NeuroWeather.git](https://github.com/YOUR_USERNAME/NeuroWeather.git)
+   git clone [https://github.com/YOUR_USERNAME/NeuroWeather.git](https://github.com/MikolajSynak/NeuroWeather.git)
    cd NeuroWeather
    ```
    
@@ -56,37 +56,3 @@ data/ - Raw data access layer (OpenMeteo API wrappers).
 settings/ - Configuration, prompts, and static data.
 
 Powered by Groq & Open-Meteo.
-
-
-### Step 4: Initialize Git and Push
-Open your terminal in the `NeuroWeather` folder and run these commands one by one.
-
-1.  **Initialize the repository:**
-    ```bash
-    git init
-    ```
-
-2.  **Add files to staging (Git will automatically ignore files from Step 1):**
-    ```bash
-    git add .
-    ```
-
-3.  **Commit your changes:**
-    ```bash
-    git commit -m "Initial commit: NeuroWeather V3 Architecture"
-    ```
-
-4.  **Connect to GitHub:**
-    * Go to [github.com/new](https://github.com/new).
-    * Name your repository `NeuroWeather`.
-    * **Do not** check "Add a README file" (you already made one).
-    * Click "Create repository".
-    * Copy the commands from the section *"...or push an existing repository from the command line"* and run them. They usually look like this:
-
-    ```bash
-    git branch -M main
-    git remote add origin https://github.com/YOUR_USERNAME/NeuroWeather.git
-    git push -u origin main
-    ```
-
-**Done.** Your code is now live, documented, and secure.
