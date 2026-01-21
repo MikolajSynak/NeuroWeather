@@ -1,9 +1,13 @@
+import sys
 import logging
+import argparse
 from core.assistant import WeatherAssistant
+from interfaces.cli import run_cli
+from interfaces.web import run_web_ui
 
 
 def setup_logging() -> None:
-    """Configures global logging."""
+    """Configures global logging format."""
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -11,30 +15,41 @@ def setup_logging() -> None:
     )
 
 
+def parse_arguments() -> argparse.Namespace:
+    """Parses command line arguments."""
+    parser = argparse.ArgumentParser(description="NeuroWeather AI System")
+    parser.add_argument(
+        "--mode",
+        choices=["cli", "web"],
+        default="cli",
+        help="Interface mode: 'cli' for terminal, 'web' for browser UI."
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    # 1. Setup Environment
     setup_logging()
-    app = WeatherAssistant()
+    args = parse_arguments()
+    logger = logging.getLogger(__name__)
 
-    print("NeuroWeather initialized. Type a weather-related question or type 'exit' to quit.")
+    # 2. Initialize Core Logic (Dependency Injection)
+    try:
+        app = WeatherAssistant()
+    except Exception as e:
+        logger.critical(f"Failed to initialize WeatherAssistant: {e}")
+        sys.exit(1)
 
-    while True:
+    # 3. Launch Selected Interface
+    if args.mode == "web":
+        logger.info("Starting Web Interface...")
         try:
-            user_input = input("\n> ").strip()
-            if not user_input:
-                continue
-            if user_input.lower() in ['exit', 'quit', 'q']:
-                break
-
-            response = app.process_query(user_input)
-            print("-" * 60)
-            print(response)
-            print("-" * 60)
-
-        except KeyboardInterrupt:
-            print("\nShutting down...")
-            break
-        except Exception as e:
-            logging.critical(f"Unhandled exception: {e}")
+            run_web_ui(app)
+        except ImportError:
+            logger.error("Gradio is not installed. Run: pip install gradio")
+    else:
+        logger.info("Starting CLI Interface...")
+        run_cli(app)
 
 
 if __name__ == "__main__":

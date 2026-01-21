@@ -17,7 +17,7 @@ RETRY_COUNT = 5
 RETRY_BACKOFF = 0.2
 
 # --- Tooling Configuration ---
-FUZZY_MATCH_THRESHOLD = 70  # Percent
+FUZZY_MATCH_THRESHOLD = 40  # Percent
 
 # --- Data Fetching Parameters ---
 HOURLY_VARIABLES = [
@@ -85,3 +85,51 @@ Return ONLY the JSON object.
 
 RESPONSE_GENERATOR_SYSTEM_PROMPT = """You are a professional weather assistant.
 Answer based EXCLUSIVELY on the provided 'Context' data. Do not hallucinate."""
+
+
+# --- UI / Interface Configuration ---
+UI_TITLE = "NeuroWeather GreyOps V3.0"
+UI_HEADER = "// NEURO_WEATHER_CORE"
+
+# Terminal-Style CSS
+UI_CUSTOM_CSS = """
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;700&display=swap');
+
+:root {
+    --terminal-orange: #ff6600;
+    --terminal-bg: #1a1a1a;
+    --terminal-panel: #262626;
+    --terminal-glow: 0 0 8px rgba(255, 102, 0, 0.4);
+}
+
+body, .gradio-container {
+    background-color: var(--terminal-bg) !important;
+    color: var(--terminal-orange) !important;
+    font-family: 'Fira Code', monospace !important;
+}
+
+.block, .panel, textarea, .output-markdown {
+    background-color: var(--terminal-panel) !important;
+    border: 1px solid #444 !important;
+    color: var(--terminal-orange) !important;
+}
+
+#header-title {
+    color: var(--terminal-orange);
+    text-shadow: var(--terminal-glow);
+    font-family: 'VT323', monospace;
+    font-size: 3em;
+    text-align: center;
+    border-bottom: 2px solid var(--terminal-orange);
+    padding-bottom: 10px;
+    background-color: var(--terminal-panel);
+}
+
+button.primary-btn {
+    background-color: var(--terminal-orange) !important;
+    color: #1a1a1a !important;
+    font-weight: bold;
+    border: 1px solid var(--terminal-orange) !important;
+}
+footer { display: none !important; }
+"""
