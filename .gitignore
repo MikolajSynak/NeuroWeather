@@ -11,6 +11,7 @@ env/
 __pycache__/
 *.py[cod]
 *$py.class
+.cache.sqlite
 
 # Local Caches
 .cache/
