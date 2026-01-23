@@ -1,6 +1,6 @@
 # Security
-.env
-.env.local
+#.env
+#.env.local
 
 # Virtual Environment
 .venv/
