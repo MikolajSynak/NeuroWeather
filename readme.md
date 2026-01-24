@@ -17,7 +17,7 @@ The system utilizes a RAG-like architecture to bridge natural language queries w
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/MikolajSynak/NeuroWeather.git](https://github.com/MikolajSynak/NeuroWeather.git
+   git clone https://github.com/MikolajSynak/NeuroWeather.git
    cd NeuroWeather
    
 2. **Create and activate a virtual environment:**
